@@ -11,21 +11,26 @@ language governing permissions and limitations under the
 License.*/
 
 import java.util.*;
-
+/**
+ * @author Enrique Collado
+ */
 public class DistanciaEdicion {
     /**
 * Calcula la distancia de edición, tal y como la expone
 * Jurafsky entre las cadenas ` s1` y ` s2`.
+*@param patron primer string a analizar
+*@param cadena segundo string a analizar
+*@return devuelve el último elemento del array bidimensional, es decir, su distancia 
 */
 public static int calcularDistancia(String patron, String cadena){
     int saltoDiagonal=0;
     int min=0;
     int[][] Distancia = new int[patron.length() +1][cadena.length() +1];// quieres coger a partir del uno
      //inicializamos el array con la longitud de los strings
-   for(int i=0; i<= patron.length() ; i++){ //filas
+   for(int i=0; i<= patron.length() ; i++){ //columnas
         Distancia[i][0] = i;
    }
-   for(int j=0; j <= cadena.length();j++){//columnas
+   for(int j=0; j <= cadena.length();j++){//filas
         Distancia[0][j] = j; 
    }
    //anidamos los for para recorrer el array bidimensional
@@ -62,10 +67,10 @@ public static int calcularDistancia(String patron, String cadena){
     }
     public static void main(String[] args){
      //int input = calcularDistancia("Papa",  "Mama");
-     //int input = calcularDistancia("tele",  "television");
+     int input = calcularDistancia("tele",  "television");
      //int input = calcularDistancia("igual",  "igual");
     // int input = calcularDistancia("coco",  "loco");
-     int input = calcularDistancia("intention",  "execution");
+     //int input = calcularDistancia("intention",  "execution");
     System.out.println("Distancia Edicion :" + input);
     }
 }
